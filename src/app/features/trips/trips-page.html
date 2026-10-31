@@ -1,0 +1,74 @@
+<header class="page-intro" appReveal>
+  <div class="wrap narrow">
+    <p class="eyebrow">Salidas</p>
+    <h1>Viajes</h1>
+    <p>
+      Revisa la salida en curso y los viajes que ya realizamos. Para reservar o preguntar
+      por otra fecha, escribe al equipo. Aquí no se apartan cupos.
+    </p>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap trips-board">
+    <h2>Salidas</h2>
+    @if (upcomingTrips().length) {
+      <ul class="trip-list">
+        @for (trip of upcomingTrips(); track trip.slug) {
+          <li>
+            <article>
+              <img
+                [src]="trip.image.src"
+                [alt]="trip.image.alt"
+                [width]="trip.image.width"
+                [height]="trip.image.height"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <p class="status">{{ phaseOf(trip) }}</p>
+                <h3><a [routerLink]="['/viajes', trip.slug]">{{ trip.title }}</a></h3>
+                <p>{{ formatDateRange(trip.start, trip.end) }}</p>
+                <p>{{ trip.summary }}</p>
+              </div>
+            </article>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p>En este momento no hay una salida anunciada.</p>
+    }
+
+    <div class="consult-block">
+      <h2>Próximas salidas</h2>
+      <p>Si buscas otra fecha, cuéntanos a dónde quieres ir.</p>
+      <a appInquiry class="button button-coral" message="¡Hola! Quiero información sobre las próximas salidas de buceo.">Consultar próximas salidas</a>
+    </div>
+
+    <h2>Experiencias anteriores</h2>
+    <ul class="plain-list">
+      @for (trip of pastTrips(); track trip.slug) {
+        <li>
+          <a [routerLink]="['/viajes', trip.slug]">
+            <span class="plain-list-title">{{ trip.title }}</span>
+            <span class="plain-list-meta">{{ formatDateRange(trip.start, trip.end) }}</span>
+          </a>
+        </li>
+      }
+      @for (mention of mentions; track mention.title) {
+        <li>
+          <a [href]="mention.href" target="_blank" rel="noopener noreferrer">
+            <span class="plain-list-title">{{ mention.title }}</span>
+            <span class="plain-list-meta plain-list-action"
+              >Ver en Instagram
+              <span class="visually-hidden">(se abre en una pestaña nueva)</span></span
+            >
+          </a>
+        </li>
+      }
+    </ul>
+    @for (mention of mentions; track mention.title) {
+      <p class="note">{{ mention.text }}</p>
+    }
+  </div>
+</section>

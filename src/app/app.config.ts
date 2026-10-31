@@ -1,11 +1,21 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration()
-  ]
+    provideZonelessChangeDetection(),
+    provideRouter(
+      routes,
+      withInMemoryScrolling({
+        anchorScrolling: 'enabled',
+        // Una sola fuente de verdad: el Router restaura historial y lleva
+        // las navegaciones nuevas al inicio. PageMotion solo anima la entrada.
+        scrollPositionRestoration: 'enabled',
+      }),
+    ),
+    provideClientHydration(withEventReplay()),
+  ],
 };

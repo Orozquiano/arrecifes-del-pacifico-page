@@ -1,0 +1,81 @@
+<header class="page-intro" appReveal>
+  <div class="wrap narrow">
+    <p class="eyebrow">Desde {{ site.founded }}</p>
+    <h1>Una empresa de buceo en Cali</h1>
+    <p>
+      Arrecifes del Pacífico acompaña desde 1989 a quienes quieren aprender a nadar y a
+      bucear, con asesoría, cuidado en el agua y salidas al mar.
+    </p>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap split">
+    <div class="prose">
+      <img
+        class="about-logo"
+        src="/images/logo-color.png"
+        alt="Logotipo a color de Arrecifes del Pacífico, con la leyenda Asesoría, seguridad y servicio."
+        width="429"
+        height="100"
+      />
+      <h2>Trayectoria</h2>
+      <p>Formamos buzos desde 1989, en Cali y en las salidas al mar.</p>
+      <p>
+        Nuestra leyenda resume el oficio: asesoría, seguridad y servicio. Operamos como
+        {{ site.legalName }}, NIT
+        <span class="nowrap">{{ site.nit }}</span>
+        y RNT
+        <span class="nowrap">{{ site.rnt }}.</span>
+      </p>
+      <h2>Enseñanza</h2>
+      <p>
+        Recibimos a niños y adultos en un ambiente de diversión, amistad y disciplina. En
+        los cursos con temario publicado combinas salón, piscina y, cuando aplica, una
+        salida de certificación que se confirma y paga aparte.
+      </p>
+      <p>
+        Si quieres saber quién dirige un curso concreto, escríbenos: te orientamos según
+        la formación que buscas.
+      </p>
+      <h2>El mar</h2>
+      <p>
+        Cuidamos los ecosistemas marinos como parte de lo que enseñamos: entender el
+        entorno y el efecto de lo que se hace, también desde casa.
+      </p>
+      <p>
+        Somos representantes de TUSA Colombia y operamos con el registro
+        <span class="nowrap">RNT {{ site.rnt }}.</span>
+      </p>
+      <p>
+        <a class="text-link" routerLink="/cursos">Ver los cursos</a>
+      </p>
+    </div>
+    <figure class="frame" appReveal>
+      <img
+        src="/images/sede.jpg"
+        alt="Sede de Arrecifes del Pacífico en Cali, con el aviso de equipos, natación, buceo y viajes."
+        width="796"
+        height="1280"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  </div>
+</section>
+
+<section class="band band-sand">
+  <div class="wrap narrow">
+    <h2>Un registro de Gorgona</h2>
+    <p>
+      En nuestro canal de YouTube hay un video de julio de 2019. Es un archivo, no una
+      salida vigente.
+    </p>
+    <app-youtube-player
+      [videoId]="site.youtubeVideo.id"
+      [title]="site.youtubeVideo.title"
+      [watchUrl]="site.youtubeVideo.watchUrl"
+      [poster]="videoPoster"
+    />
+  </div>
+</section>

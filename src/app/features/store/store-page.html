@@ -1,0 +1,69 @@
+<header class="page-intro" appReveal>
+  <div class="wrap narrow">
+    <p class="eyebrow">Equipo</p>
+    <h1>Tienda</h1>
+    <p>
+      En la sede te ayudamos a elegir el equipo para tu siguiente inmersión. Este sitio no
+      tiene carrito, inventario ni pagos: la compra se hace en nuestra tienda de Mercado
+      Libre o con el equipo en Cali.
+    </p>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap split">
+    <figure class="frame" appReveal>
+      <img
+        src="/images/sede.jpg"
+        alt="Entrada de la tienda en Cali, con equipos de buceo exhibidos en la vitrina."
+        width="796"
+        height="1280"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </figure>
+    <div class="prose">
+      <h2>Asesoría en la sede</h2>
+      <p>
+        Estamos en la {{ site.address.full }}. En la fachada anunciamos equipos, natación,
+        buceo y viajes. En la vitrina puedes ver trajes, máscaras, aletas y cilindros.
+      </p>
+      <p>
+        Cuéntanos tu nivel y el tipo de inmersión que planeas: te orientamos para elegir
+        con criterio antes de comprar.
+      </p>
+      <p>También somos representantes de TUSA Colombia.</p>
+      <div class="actions">
+        <a class="button button-deep" [href]="site.storeUrl" target="_blank" rel="noopener noreferrer">
+          Ir a la tienda en Mercado Libre
+          <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+        </a>
+        <a appInquiry class="button button-coral" message="¡Hola! Quiero asesoría para elegir equipo de buceo.">Pedir asesoría</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-sand">
+  <div class="wrap split">
+    <div class="prose">
+      <h2>Equipo en uso</h2>
+      <p>
+        Estas fotografías muestran reguladores, chalecos y trajes durante una inmersión.
+        Sirven para ver el tipo de equipo del que hablamos; no son un catálogo con
+        precios.
+      </p>
+      <p>Para disponibilidad y tarifas, usa la tienda en línea o escríbenos.</p>
+    </div>
+    <figure class="frame" appReveal>
+      <img
+        src="/images/buzo-equipo.webp"
+        alt="Buzo con chaleco, regulador y aletas en aguas abiertas."
+        width="1920"
+        height="800"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  </div>
+</section>

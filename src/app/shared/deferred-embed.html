@@ -1,0 +1,32 @@
+<div class="embed">
+  <div class="embed-fallback" role="region" [attr.aria-label]="title()">
+    @if (poster(); as image) {
+      <img
+        class="embed-fallback-poster"
+        [src]="image.src"
+        [alt]="image.alt"
+        [width]="image.width"
+        [height]="image.height"
+        loading="lazy"
+        decoding="async"
+      />
+    }
+    <p class="embed-place-label">{{ previewLabel() || title() }}</p>
+    @if (previewDetail(); as detail) {
+      <p class="embed-place-detail">{{ detail }}</p>
+    }
+    <p>Consulta la dirección o ábrela en Google Maps.</p>
+    <a class="button button-sand" [href]="externalUrl()" target="_blank" rel="noopener noreferrer">
+      {{ externalLabel() || actionLabel() }}
+      <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+    </a>
+  </div>
+
+  <p class="embed-external">
+    <a class="embed-watch" [href]="externalUrl()" target="_blank" rel="noopener noreferrer">
+      <app-icon name="pin" />
+      {{ externalLabel() }}
+      <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+    </a>
+  </p>
+</div>

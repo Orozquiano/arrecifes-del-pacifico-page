@@ -1,0 +1,59 @@
+<div class="embed" [attr.aria-busy]="phase() === 'loading'">
+  @if (phase() === 'preview') {
+    <div class="embed-preview">
+      @if (poster(); as image) {
+        <img
+          [src]="image.src"
+          [alt]="image.alt"
+          [width]="image.width"
+          [height]="image.height"
+          loading="lazy"
+          decoding="async"
+        />
+      }
+      <div class="embed-actions">
+        <button type="button" class="button button-sand" (click)="activate()">Reproducir video</button>
+      </div>
+    </div>
+  } @else {
+    <div
+      class="youtube-stage"
+      [class.is-error]="phase() === 'error'"
+      [class.is-loading]="phase() === 'loading'"
+    >
+      @if (phase() !== 'error') {
+        @for (id of [attempt()]; track id) {
+          <div #frame class="youtube-frame"></div>
+        }
+      }
+      @if (phase() === 'loading') {
+        <p class="embed-status" role="status">Cargando el video…</p>
+      }
+      @if (phase() === 'error') {
+        <div class="embed-fallback" role="alert">
+          <p>{{ failure()?.message }}</p>
+          <a
+            class="button button-sand"
+            [href]="watchUrl()"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver en YouTube
+            <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+          </a>
+          @if (failure()?.retry) {
+            <button type="button" class="button button-ghost" (click)="retry()">Reintentar</button>
+          }
+        </div>
+      }
+    </div>
+  }
+
+  <p class="embed-external">
+    <a class="embed-watch" [href]="watchUrl()" target="_blank" rel="noopener noreferrer">
+      <app-icon name="youtube" />
+      Ver en YouTube
+      <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+    </a>
+  </p>
+</div>

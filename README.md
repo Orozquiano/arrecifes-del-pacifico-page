@@ -1,59 +1,49 @@
-# ArrecifesDelPacificoPage
+# Arrecifes del Pacífico
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+Sitio público de la empresa de buceo en Cali. La información sale del sitio anterior y de sus folletos. El detalle de fuentes, huecos y recursos está en [docs/content-inventory.md](docs/content-inventory.md).
 
-## Development server
+## Versiones comprobadas
 
-To start a local development server, run:
+Consulta hecha el 30 de octubre de 2026 con npm:
 
-```bash
-ng serve
-```
+| Pieza | Versión publicada estable | En este proyecto |
+| --- | --- | --- |
+| `@angular/core` | 22.2.4 | 22.2.4 |
+| `@angular/cli`, `@angular/build`, `@angular/ssr` | 22.2.5 | 22.2.5 |
+| TypeScript | Angular 22.2 admite `>=6.0 <6.1` | 6.0.3 |
+| Node.js usado | CLI admite `^22.22.3`, `^24.15.0` o `>=26` | 26.12.1 |
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+No se usaron versiones `next`, `beta` ni `rc`. TypeScript 7 no es compatible con este Angular.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Comandos
 
 ```bash
-ng generate --help
+npm ci
+npm start
+npm run build
+npm test
+npm run serve:ssr:arrecifes-del-pacifico-page
 ```
 
-## Building
+`npm start` abre el desarrollo en http://localhost:4200/. El build de producción deja el resultado en `dist/arrecifes-del-pacifico-page`. El servidor de producción escucha en el puerto de la variable `PORT` o, si no existe, en el 4000.
 
-To build the project run:
+## Hosting
+
+La aplicación prerenderiza las páginas públicas y renderiza en el servidor las direcciones que no existen, con hidratación en el navegador.
+
+Para publicar hace falta Node.js, no solo los archivos estáticos:
 
 ```bash
-ng build
+npm run build
+node dist/arrecifes-del-pacifico-page/server/server.mjs
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+El servidor solo acepta estos hosts: `localhost`, `127.0.0.1`, `arrecifesdelpacifico.com` y `www.arrecifesdelpacifico.com`. Están en `angular.json`, en `security.allowedHosts`. Otro dominio debe agregarse ahí y volver a construir. La variable `NG_ALLOWED_HOSTS` reemplaza esa lista por completo; si se usa, hay que incluir todos los hosts necesarios, separados por comas.
 
-## Running unit tests
+Antes de publicar, confirma que `siteConfig.origin` en `src/app/core/config/site.config.ts` sea el dominio real. Ese valor arma las URL canónicas y Open Graph. `public/sitemap.xml` y `public/robots.txt` usan `https://arrecifesdelpacifico.com`.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Las rutas conocidas también quedan como HTML en `dist/arrecifes-del-pacifico-page/browser`. Una dirección inexistente necesita el servidor de Node para responder 404 con la página del sitio.
 
-```bash
-ng test
-```
+## Qué no incluye esta etapa
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+No hay carrito, pagos, formulario simulado, panel administrativo ni publicación sobre el sitio que está en línea.

@@ -1,0 +1,58 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <img
+        class="footer-logo"
+        src="/images/logo-blanco.png"
+        alt="Arrecifes del Pacífico"
+        width="429"
+        height="100"
+      />
+      <p>Desde {{ site.founded }}. {{ site.tagline }}.</p>
+      <p class="fine-print">
+        {{ site.legalName }} ·
+        <span class="nowrap">NIT {{ site.nit }}</span> ·
+        <span class="nowrap">RNT {{ site.rnt }}</span>
+      </p>
+    </div>
+
+    <nav aria-label="Pie de página">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/cursos" routerLinkActive="is-active">Cursos</a>
+      <a routerLink="/viajes" routerLinkActive="is-active">Viajes</a>
+      <a routerLink="/nosotros" routerLinkActive="is-active">Nosotros</a>
+      <a routerLink="/tienda" routerLinkActive="is-active">Tienda</a>
+      <a routerLink="/contacto" routerLinkActive="is-active">Contacto</a>
+    </nav>
+
+    <div class="footer-contact">
+      <a [href]="site.mapsUrl" target="_blank" rel="noopener noreferrer">
+        <app-icon name="pin" />
+        {{ site.address.full }}
+        <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+      </a>
+      <a [href]="'tel:' + site.phone.tel"><app-icon name="phone" /> {{ site.phone.display }}</a>
+      <a [href]="whatsappHref" target="_blank" rel="noopener noreferrer">
+        <app-icon name="whatsapp" /> WhatsApp {{ site.whatsapp.display }}
+        <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+      </a>
+      <a [href]="'mailto:' + site.email"><app-icon name="mail" /> {{ site.email }}</a>
+    </div>
+
+    <div class="social">
+      <a [href]="site.instagramUrl" target="_blank" rel="noopener noreferrer">
+        <app-icon name="instagram" /> Instagram
+        <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+      </a>
+      <a [href]="site.youtubeChannelUrl" target="_blank" rel="noopener noreferrer">
+        <app-icon name="youtube" /> YouTube
+        <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+      </a>
+      <a [href]="site.tripadvisorUrl" target="_blank" rel="noopener noreferrer">
+        Tripadvisor
+        <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+      </a>
+    </div>
+  </div>
+  <p class="copyright">© {{ year }} {{ site.name }}</p>
+</footer>

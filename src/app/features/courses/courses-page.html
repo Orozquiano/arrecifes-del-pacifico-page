@@ -1,0 +1,46 @@
+<header class="page-intro" appReveal>
+  <div class="wrap narrow">
+    <p class="eyebrow">Cali</p>
+    <h1>Cursos</h1>
+    <p>
+      Natación, apnea y buceo autónomo para empezar. Después puedes seguir con
+      avanzado, especialidades o Freediver. Los requisitos de cada uno están en su ficha.
+    </p>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <h2 class="group-title">Para empezar</h2>
+    <ul class="course-index">
+      @for (course of starting; track course.slug; let index = $index) {
+        <li>
+          <a [routerLink]="['/cursos', course.slug]">
+            <span class="course-number">0{{ index + 1 }}</span>
+            <span>
+              <span class="course-name">{{ course.name }}</span>
+              <span class="course-summary">{{ course.lead }} {{ course.summary }}</span>
+            </span>
+            <span class="course-go">Ver curso</span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <h2 class="group-title">Para continuar</h2>
+    <ul class="course-index">
+      @for (course of continuing; track course.slug; let index = $index) {
+        <li>
+          <a [routerLink]="['/cursos', course.slug]">
+            <span class="course-number">0{{ index + 1 }}</span>
+            <span>
+              <span class="course-name">{{ course.name }}</span>
+              <span class="course-summary">{{ course.lead }} {{ course.summary }}</span>
+            </span>
+            <span class="course-go">Ver curso</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

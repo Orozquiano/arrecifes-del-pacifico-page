@@ -1,0 +1,104 @@
+<header class="page-intro contact-intro" appReveal>
+  <div class="wrap narrow">
+    <p class="eyebrow">Cali</p>
+    <h1>Contacto</h1>
+    <p>Escríbenos por WhatsApp, llama o envía un correo. Te respondemos por el mismo canal.</p>
+  </div>
+</header>
+
+<section class="band band-sand contact-details">
+  <div class="wrap split contact-layout">
+    <figure class="frame contact-photo" appReveal>
+      <img
+        src="/images/sede.jpg"
+        alt="Fachada de Arrecifes del Pacífico en la calle 9 de Cali."
+        width="796"
+        height="1280"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="contact-channels">
+      <ul class="contact-directory">
+        <li>
+          <p class="contact-directory-label">Sede</p>
+          <a
+            class="contact-directory-value"
+            [href]="site.mapsUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <app-icon name="pin" />
+            <span>
+              {{ site.address.full }}
+              <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <p class="contact-directory-label">Teléfono</p>
+          <a class="contact-directory-value" [href]="'tel:' + site.phone.tel">
+            <app-icon name="phone" />
+            <span>{{ site.phone.display }}</span>
+          </a>
+        </li>
+        <li>
+          <p class="contact-directory-label">WhatsApp</p>
+          <a
+            class="contact-directory-value"
+            [href]="whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <app-icon name="whatsapp" />
+            <span>
+              {{ site.whatsapp.display }}
+              <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <p class="contact-directory-label">Correo</p>
+          <a class="contact-directory-value" [href]="'mailto:' + site.email">
+            <app-icon name="mail" />
+            <span>{{ site.email }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="actions contact-actions">
+        <a appInquiry class="button button-coral" [message]="site.whatsapp.defaultMessage"
+          >Escribir por WhatsApp</a
+        >
+        <a
+          class="button button-deep"
+          [href]="site.mapsUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Cómo llegar
+          <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap narrow">
+    <h2>Ubicación</h2>
+    <p>
+      {{ site.address.full }}. Abre la ubicación en Google Maps para ver cómo llegar.
+    </p>
+    <app-deferred-embed
+      title="Mapa de la sede de Arrecifes del Pacífico en Cali"
+      [embedUrl]="site.mapsEmbedUrl"
+      [externalUrl]="site.mapsUrl"
+      externalLabel="Abrir en Google Maps"
+      [previewLabel]="site.name"
+      [previewDetail]="site.address.full"
+      [autoload]="true"
+    />
+  </div>
+</section>

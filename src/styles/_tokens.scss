@@ -1,0 +1,56 @@
+:root {
+  --deep: #062b3b;
+  --ocean: #07566b;
+  --turquoise: #007f82;
+  --coral: #ff795d;
+  /* Coral oscuro para texto pequeño sobre fondos claros (WCAG AA). */
+  --coral-ink: #a8321c;
+  --sand: #f5f1e8;
+  --white: #ffffff;
+  --ink: #062b3b;
+  --muted: #3d5560;
+  --line: rgba(6, 43, 59, 0.16);
+  --header-height: 4.75rem;
+  --header-nav-height: 0rem;
+  --gutter: clamp(1.15rem, 4vw, 2.5rem);
+  --foam: #e7f3f6;
+  --mist: #d7e6ea;
+  --shoal: #5fa3b0;
+  --lagoon: #1a6d7c;
+  /* Transiciones entre bandas: ~80–112 px en escritorio; móvil las acorta. */
+  --blend: clamp(5rem, 6.5vw, 6.5rem);
+  --blend-strong: clamp(5.25rem, 7vw, 7rem);
+  --motion-fast: 150ms;
+  --motion-control: 220ms;
+  --motion-page: 220ms;
+  --motion-enter: 360ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --font-display: 'Fraunces', 'Iowan Old Style', Palatino, 'Palatino Linotype', serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --measure: 68ch;
+  color-scheme: light;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/fraunces-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('/fonts/source-sans-3.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('/fonts/source-sans-3.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

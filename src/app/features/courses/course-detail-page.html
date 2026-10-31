@@ -1,0 +1,107 @@
+@if (course; as item) {
+  <article class="detail">
+    <header class="detail-hero">
+      <img
+        [src]="item.image.src"
+        [alt]="item.image.alt"
+        [width]="item.image.width"
+        [height]="item.image.height"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="wrap detail-intro">
+        <nav class="crumbs" aria-label="Miga de pan">
+          <a routerLink="/cursos">Cursos</a>
+          <span aria-hidden="true">/</span>
+          <span>{{ item.name }}</span>
+        </nav>
+        <p class="eyebrow">{{ item.lead }}</p>
+        <h1>{{ item.name }}</h1>
+        <p class="lede">{{ item.summary }}</p>
+        <a appInquiry class="button button-coral" [message]="inquiry">Consultar este curso</a>
+      </div>
+    </header>
+
+    <div class="wrap detail-body">
+      @for (paragraph of item.paragraphs; track paragraph) {
+        <p>{{ paragraph }}</p>
+      }
+
+      @if (item.topics.length) {
+        <h2>Qué vas a trabajar</h2>
+        <ul>
+          @for (topic of item.topics; track topic) {
+            <li>{{ topic }}</li>
+          }
+        </ul>
+      }
+
+      @if (item.format.length) {
+        <h2>Cómo está planteado</h2>
+        <ul>
+          @for (step of item.format; track step) {
+            <li>{{ step }}</li>
+          }
+        </ul>
+      }
+
+      @if (item.requirements.length) {
+        <h2>Qué necesitas</h2>
+        <ul>
+          @for (requirement of item.requirements; track requirement) {
+            <li>{{ requirement }}</li>
+          }
+        </ul>
+      }
+
+      @if (item.includes.length) {
+        <h2>Qué incluye</h2>
+        <ul>
+          @for (entry of item.includes; track entry) {
+            <li>{{ entry }}</li>
+          }
+        </ul>
+      }
+
+      @if (item.excludes.length) {
+        <h2>Qué no incluye</h2>
+        <ul>
+          @for (entry of item.excludes; track entry) {
+            <li>{{ entry }}</li>
+          }
+        </ul>
+      }
+
+      @if (item.investment.length) {
+        <h2>Tarifa</h2>
+        <ul>
+          @for (price of item.investment; track price) {
+            <li>{{ price }}</li>
+          }
+        </ul>
+        <p class="note">Confirma la vigencia con el equipo antes de reservar. Este sitio no cobra ni aparta cupos.</p>
+      }
+
+      @if (item.gaps.length) {
+        <p class="note">Consulta los detalles con nuestro equipo: {{ item.gaps.join(', ') }}.</p>
+      }
+
+      @for (note of item.notes; track note) {
+        <p class="note">{{ note }}</p>
+      }
+
+      @if (item.brochureUrl) {
+        <p>
+          <a class="text-link" [href]="item.brochureUrl" target="_blank" rel="noopener noreferrer">
+            Ver el folleto publicado (PDF)
+            <span class="visually-hidden"> (se abre en una pestaña nueva)</span>
+          </a>
+        </p>
+      }
+
+      <a appInquiry class="button button-coral" [message]="inquiry">Consultar este curso</a>
+    </div>
+  </article>
+} @else {
+  <app-not-found />
+}

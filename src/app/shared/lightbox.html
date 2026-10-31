@@ -1,0 +1,26 @@
+<dialog
+  #dialog
+  class="lightbox"
+  aria-label="Fotografía ampliada"
+  (close)="onDialogClose()"
+  (click)="backdrop($event)"
+  (keydown.escape)="close()"
+>
+  <p class="visually-hidden" aria-live="polite">{{ liveMessage() }}</p>
+  @if (current(); as image) {
+    <figure>
+      <img
+        [src]="image.src"
+        [alt]="image.alt"
+        [width]="image.width"
+        [height]="image.height"
+      />
+      <figcaption>{{ image.alt }}</figcaption>
+    </figure>
+    <div class="lightbox-controls">
+      <button type="button" class="button button-sand" (click)="step(-1)">Anterior</button>
+      <button type="button" class="button button-sand" (click)="step(1)">Siguiente</button>
+      <button type="button" class="button button-coral" (click)="close()">Cerrar</button>
+    </div>
+  }
+</dialog>

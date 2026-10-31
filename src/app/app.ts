@@ -1,12 +1,25 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PageMotion } from './core/navigation/page-motion';
+import { SeoService } from './core/seo/seo.service';
+import { TripCalendar } from './core/trips/trip-calendar';
+import { SiteFooter } from './shared/site-footer';
+import { SiteHeader } from './shared/site-header';
 
+/**
+ * @class App
+ * @description Compone el encabezado, las páginas y el pie del sitio público.
+ */
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.scss',
+  imports: [RouterOutlet, SiteHeader, SiteFooter],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('arrecifes-del-pacifico-page');
+  constructor() {
+    inject(SeoService).installBusinessGraph();
+    inject(TripCalendar);
+    inject(PageMotion);
+  }
 }
